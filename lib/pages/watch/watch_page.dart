@@ -56,55 +56,60 @@ class _WatchPageState extends State<WatchPage> {
                   ],
                 ),
                 moviesProvider.moviesList.isNotEmpty ? Expanded(
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
-                    decoration:  BoxDecoration(
-                      color: appColorGrey,
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(24.0),
-                          topRight: Radius.circular(24.0),
-                        )),
-                    child:  ListView.builder(
-                      physics: const BouncingScrollPhysics(),
-                      itemCount: homeList.length,
-                      shrinkWrap: true,
-                      primary: true,
-                      scrollDirection: Axis.vertical,
-                      itemBuilder: (context, index) {
-                        return Stack(
-                          children: <Widget>[
-                            Container(
-                                padding: const EdgeInsets.all(5),
-                                child: Image.asset(
-                                    ApiService.IMAGE_URL+homeList[index].posterPath.toString(),
-                                    fit: BoxFit.cover
-                                )
-                            ),
-                            Positioned(
-                                left: 25,
-                                bottom: 25,
-                                child: Container(
-                                  decoration: const BoxDecoration(
-                                      color: Color.fromRGBO(0, 0, 0, 0.1)
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: <Widget>[
-                                      Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Text(homeList[index].title.toString(), style: TextStyle(fontSize: 18.sp, color: Colors.white,fontWeight: FontWeight.bold)),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                )
-                            )
-                          ],
-                        );
-                      },
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 18.0),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      decoration:  const BoxDecoration(
+
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(24.0),
+                            topRight: Radius.circular(24.0),
+                          )),
+                      child:  ListView.builder(
+                        physics: const BouncingScrollPhysics(),
+                        itemCount: moviesProvider.moviesList.length,
+                        shrinkWrap: true,
+                        primary: true,
+                        scrollDirection: Axis.vertical,
+                        itemBuilder: (context, index) {
+                          return Stack(
+                            children: <Widget>[
+                              Container(
+                          height:MediaQuery.of(context).size.height/3.5,
+                                  width: MediaQuery.of(context).size.width,
+                                  padding: const EdgeInsets.all(8),
+                                  child: Image.network(
+                                      ApiService.IMAGE_URL+moviesProvider.moviesList[index].backdropPath.toString(),
+                                      fit: BoxFit.fill,
+
+                                  )
+                              ),
+                              Positioned(
+                                  left: 25,
+                                  bottom: 30,
+                                  child: Container(
+                                    decoration: const BoxDecoration(
+                                        color: Color.fromRGBO(0, 0, 0, 0.1)
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: <Widget>[
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            LargeTitleTextWidget(title:moviesProvider.moviesList[index].title.toString(),color:appColorWhite),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                              )
+                            ],
+                          );
+                        },
+                      ),
                     ),
                   ),
                 ) : Center(child: CircularProgressIndicator(color: appColorYellow,)),

@@ -4,9 +4,9 @@ import 'package:movies_app/models/movies.dart';
 
 class SeverResponse {
   Dates? dates;
-  String? page;
-  Dates? total_pages;
-  Dates? total_results;
+  int? page;
+  int? total_pages;
+  int? total_results;
   List<Movies>? results;
 
 

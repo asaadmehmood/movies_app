@@ -10,11 +10,11 @@ class Movies {
   String? originalTitle;
   String? overview;
   bool? video;
-  String? popularity;
+  double? popularity;
   String? posterPath;
   String? releaseDate;
-  String? voteAverage;
-  String? voteCount;
+  double? voteAverage;
+  int? voteCount;
   String? backdropPath;
   bool? adult;
 
@@ -39,12 +39,12 @@ class Movies {
     originalLanguage = json['original_language'];
     originalTitle = json['original_title'];
     overview = json['overview'];
-    popularity = json['popularity'];
+//    popularity = json['popularity'];
     posterPath = json['poster_path'];
     releaseDate = json['release_date'];
     title = json['title'];
     video = json['video'];
-    voteAverage = json['vote_average'];
+//    voteAverage = json['vote_average'];
     voteCount = json['vote_count'];
     backdropPath = json['backdrop_path'];
   }

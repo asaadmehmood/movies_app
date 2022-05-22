@@ -82,7 +82,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `movies` (`id` INTEGER, `title` TEXT, `originalLanguage` TEXT, `originalTitle` TEXT, `overview` TEXT, `video` INTEGER, `popularity` TEXT, `posterPath` TEXT, `releaseDate` TEXT, `voteAverage` TEXT, `voteCount` TEXT, `backdropPath` TEXT, `adult` INTEGER, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `movies` (`id` INTEGER, `title` TEXT, `originalLanguage` TEXT, `originalTitle` TEXT, `overview` TEXT, `video` INTEGER, `popularity` REAL, `posterPath` TEXT, `releaseDate` TEXT, `voteAverage` REAL, `voteCount` INTEGER, `backdropPath` TEXT, `adult` INTEGER, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -134,13 +134,13 @@ class _$MoviesDao extends MoviesDao {
             adult: row['adult'] == null ? null : (row['adult'] as int) != 0,
             originalTitle: row['originalTitle'] as String?,
             originalLanguage: row['originalLanguage'] as String?,
-            popularity: row['popularity'] as String?,
+            popularity: row['popularity'] as double?,
             posterPath: row['posterPath'] as String?,
             releaseDate: row['releaseDate'] as String?,
             overview: row['overview'] as String?,
             video: row['video'] == null ? null : (row['video'] as int) != 0,
-            voteAverage: row['voteAverage'] as String?,
-            voteCount: row['voteCount'] as String?,
+            voteAverage: row['voteAverage'] as double?,
+            voteCount: row['voteCount'] as int?,
             backdropPath: row['backdropPath'] as String?));
   }
 
@@ -152,13 +152,13 @@ class _$MoviesDao extends MoviesDao {
             adult: row['adult'] == null ? null : (row['adult'] as int) != 0,
             originalTitle: row['originalTitle'] as String?,
             originalLanguage: row['originalLanguage'] as String?,
-            popularity: row['popularity'] as String?,
+            popularity: row['popularity'] as double?,
             posterPath: row['posterPath'] as String?,
             releaseDate: row['releaseDate'] as String?,
             overview: row['overview'] as String?,
             video: row['video'] == null ? null : (row['video'] as int) != 0,
-            voteAverage: row['voteAverage'] as String?,
-            voteCount: row['voteCount'] as String?,
+            voteAverage: row['voteAverage'] as double?,
+            voteCount: row['voteCount'] as int?,
             backdropPath: row['backdropPath'] as String?),
         arguments: [id]);
   }

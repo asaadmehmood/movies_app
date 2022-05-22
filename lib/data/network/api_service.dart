@@ -30,10 +30,10 @@ class ApiService {
   static Future<SeverResponse> movies() async {
     try {
       String url = BASE_API_URL + MOVIES_END_POINT;
-      final response = await baseAPI.get(url,queryParameters: {'api_key':'3ab677f66c4c848c497607a4fee4ee3a'});
-      logger.e(response.data['results'].toString());
+      Response response = await baseAPI.get(url,queryParameters: {'api_key':'3ab677f66c4c848c497607a4fee4ee3a'});
+      logger.e(response.data.toString());
       return SeverResponse.fromJson(
-        json.decode(response.data),
+          response.data
       );
     } catch (e) {
       if (e is SocketException) {

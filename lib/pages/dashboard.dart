@@ -113,14 +113,14 @@ class _DashboardPageState extends State<DashboardPage> {
                 ? Padding(
                 padding: EdgeInsets.all(5.w),
                 child: Image.asset(
-                  libImage,
+                  homeImage,
                   width: 20.w,
                   height: 20.h,
                 ))
                 : Padding(
               padding: const EdgeInsets.all(5.0),
               child: Image.asset(
-                libImage,
+                homeImage,
                 width: 20.w,
                 height: 20.h,
               ),
@@ -171,7 +171,6 @@ class _DashboardPageState extends State<DashboardPage> {
               child: const Icon(
                 Icons.segment,
                 size: 28,
-                color: Colors.green,
               ),
             )
                 : Padding(
